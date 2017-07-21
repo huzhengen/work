@@ -5,3 +5,6 @@
 若页面需默认用ie兼容内核，增加标签：```<meta name="renderer" content="ie-comp">``` <br>
 若页面需默认用ie标准内核，增加标签：```<meta name="renderer" content="ie-stand">``` <br>
 content的取值为webkit,ie-comp,ie-stand之一，区分大小写，分别代表用webkit内核，IE兼容内核，IE标准内核。
+
+QQ浏览器：
+http://browser.qq.com/wiki/index.html#!index.md
