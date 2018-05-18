@@ -9,6 +9,8 @@ ssh -p 端口 用户名@ip
 
 ssh -p 29711 tiaoban@66.219.112.129
 
+/etc/init.d/nginx restart
+
 
 一个服务器绑定多个域名，可以写多个.conf，如果是ubuntu默认安装nginx，在/etc/nginx/conf.d里写demo.conf文件
 
