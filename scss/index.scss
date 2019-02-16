@@ -1,0 +1,35 @@
+$r: red;
+$grey: #666;
+$gray: $grey;
+$border-width: 1px;
+@mixin debug($border-color:red){
+	border: $border-width solid $border-color
+}
+%box{
+	@include debug($grey);
+	box-shadow: 0 0 13px black;
+	margin: 20px 0 0 0;
+	padding:0;
+	list-style: none;
+}
+
+body{
+	h1{
+		color: $r;
+	}
+}
+.nav{
+	@include debug;
+	padding: 10px;
+	> ul{
+		margin: 0;
+		padding: 0;
+		> li{
+			@extend %box;
+		}
+	}
+}
+
+.demo{
+	@extend %box;
+}
