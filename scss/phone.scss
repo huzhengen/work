@@ -1,8 +1,14 @@
 // vw  vh
 // function
+// mixin content
 
 @function pxToVw($npx){
 	@return $npx/375*100vw;
+}
+@mixin phone {
+	@media (max-width: 768px) {
+		@content;
+	}
 }
 
 *{
@@ -10,10 +16,79 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+body{
+	background: linear-gradient(to right, #2b3e76, #1e2d61);
+}
+svg{
+	overflow: inherit;
+	fill: #fff;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+ul,ol,li{
+	list-style-type: none;
+}
+
+nav{
+	display: flex;
+	align-items: center;
+	color: #fff;
+	padding: 10px;
+	> ul{
+		display: flex;
+		> li{
+			flex-shrink: 0;
+			> a{
+				display: inline-block;
+				padding: 1em;
+			}
+		}
+	}
+	> .menu{
+		display: none;
+	}
+	@include phone{
+		&{
+			justify-content: space-between;
+		}
+		&.open > ul{
+			display: block;
+			position: fixed;
+			width: 100%;
+			top: 73px;
+			left: 0;
+			background: rgba(255, 255, 255, 0.15);
+			color: #000;
+			animation: 0.5s linear down;
+		}
+		& > ul{
+			display: none;
+		}
+		& > .menu{
+			display: block;
+		}
+	}
+}
+@keyframes down{
+	0%{
+		transform: translateY(-100%);
+	}
+	100%{
+		transform: translateY(0);
+	}
+}
+
+
+
+
 
 .icons{
+	margin-top: 100%;
 	display: flex;
 	justify-content: space-around;
+	color: #fff;
 	> .icon{
 		border: 1px solid grey;
 		width: pxToVw(69);
