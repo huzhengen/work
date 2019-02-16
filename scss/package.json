@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "parcel": "^1.11.0",
-    "sass": "^1.17.0"
+    "sass": "^1.17.0",
+    "webpack": "^4.29.4"
   }
 }
