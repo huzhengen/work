@@ -1,0 +1,80 @@
+// darken
+// @mixin  @include
+// @for @if
+@mixin buttonName($color) {
+	background-color: $color;
+	box-shadow: 0 5px 0 0 darken($color, 10%);
+}
+*{
+	box-sizing: border-box;
+}
+body{
+	background-color: #fff;
+	margin: 0;
+	padding: 0;
+}
+.buttonWrapper{
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	button{
+		$white: #fff;
+		border: none;
+		padding: 10px 20px;
+		color: $white;
+		font-size: 24px;
+		border-radius: 4px;
+		cursor: pointer;
+		margin: 0 40px;
+		outline: none;
+		&:first-child{
+			$blue: #55acee;
+			@include buttonName($blue);
+			&:hover{
+				animation: 0.1s shake;
+			}
+		}
+		&:last-child{
+			$green: #2ecc71;
+			@include buttonName($green);
+			&:hover{
+				animation: 0.1s bounce;
+			}
+		}
+	}
+}
+$percent: 25%;
+@keyframes shake{
+	$n: 10%;
+	@for $i from 0 to 5{
+		#{$i * $percent}{
+			@if $i == 4{
+				transform: translateX(0);
+			}@else{
+				@if $i%2 == 0{
+					transform: translateX(-$n);
+				}@else{
+					transform: translateX($n);
+				}	
+			} 		
+		}
+	}
+}
+
+@keyframes bounce{
+	$n: 20%;
+	@for $i from 0 to 5{
+		#{$i * $percent}{
+			@if $i == 4{
+				transform: translateY(0);
+			}@else{
+				@if $i%2 == 0{
+					transform: translateY(-$n);
+				}@else{
+					transform: translateY($n);
+				}	
+			} 		
+		}
+	}
+}
