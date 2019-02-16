@@ -1,0 +1,26 @@
+// vw  vh
+// function
+
+@function pxToVw($npx){
+	@return $npx/375*100vw;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.icons{
+	display: flex;
+	justify-content: space-around;
+	> .icon{
+		border: 1px solid grey;
+		width: pxToVw(69);
+		height: pxToVw(69);
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
