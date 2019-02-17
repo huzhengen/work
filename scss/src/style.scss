@@ -27,3 +27,9 @@ main{
     height: 200px;
     @extend %box;
 }
+
+.box2{
+    width: 200px;
+    height: 200px;
+    @extend %box;
+}
