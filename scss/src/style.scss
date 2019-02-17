@@ -1,5 +1,18 @@
-body{
-    h1{
-        color: red;
+@mixin box($width:100px, $height:100px) {
+    width: $width;
+    height: $height;
+    box-shadow: 0 0 5px #000;
+    margin: 10px;
+}
+
+.smallBox{
+    @include box;
+}
+.bigBox{
+    @include box(300px,300px);
+}
+main{
+    > .demo{
+        @include box(50px,50px);
     }
 }
