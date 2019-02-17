@@ -5,6 +5,11 @@
     margin: 10px;
 }
 
+%box {
+    box-shadow: 0 0 5px #000;
+    margin: 10px;
+}
+
 .smallBox{
     @include box;
 }
@@ -15,4 +20,10 @@ main{
     > .demo{
         @include box(50px,50px);
     }
+}
+
+.box1{
+    width: 200px;
+    height: 200px;
+    @extend %box;
 }
