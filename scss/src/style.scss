@@ -9,6 +9,9 @@
     box-shadow: 0 0 5px #000;
     margin: 10px;
 }
+@function x2($value){
+    @return $value*2;
+}
 
 .smallBox{
     @include box;
@@ -23,8 +26,8 @@ main{
 }
 
 .box1{
-    width: 200px;
-    height: 200px;
+    width: x2(100px);
+    height: x2(100px);
     @extend %box;
 }
 
