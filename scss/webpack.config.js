@@ -20,5 +20,10 @@ module.exports = {
                 'sass-loader'
             ]
         }]
+    },
+    resolve: {
+        alias: {
+            components: path.resolve(__dirname, 'src/components/')
+        }
     }
 }
