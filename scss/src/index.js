@@ -1,2 +1,2 @@
-import './style.scss'
+import './index.scss'
 console.log(123)
