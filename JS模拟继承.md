@@ -55,3 +55,32 @@ class Man extends Human{
 	}
 }
 ```
+
+mixin 混入 // Object.assign()
+
+```js
+let mixin = function(a, b){
+	for(let key in b){
+		a[key] = b[key]
+	}
+}
+```
+
+curry 柯里化
+
+一个函数再返回一个函数，基本就是柯里化
+
+```js
+var cache = []
+var add = function(){
+	if(n === undefined){
+		return cache.reduce((p, n)=>p+n, 0)
+	}else{
+		cache.push(n)
+		return add
+	}
+}
+add(1)(2)(3)(4)()
+```
+
+HOC 高阶函数
