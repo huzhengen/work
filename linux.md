@@ -16,3 +16,6 @@ ssh -p 29711 tiaoban@66.219.112.129
 
 Ubuntu 更改用户密码：打开终端，输入命令：sudo passwd 用户名
 
+tar命令
+解包：tar zxvf FileName.tar
+打包：tar czvf FileName.tar DirName
