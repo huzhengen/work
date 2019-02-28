@@ -1,6 +1,18 @@
 # interview
 
-1、Canvas有哪些API？比如，如何获取到Canvas的上下文？ getContext的参数是什么？Canvas和SVG的区别了解吗？
+1、Canvas有哪些API？比如，如何获取到Canvas的上下文？getContext的参数是什么？Canvas和SVG的区别了解吗？
+
+fillRect 填充矩形
+
+strokeRect 矩形边框
+
+clearRect 清除矩形
+
+beginPath、closePath、stroke、fill、moveTo、lineTo
+
+getContext() 方法来访问绘画上下文
+
+`var ctx = canvas.getContext('2d');`
 
 2、一个用户完整的注册流程是怎样的？如何知道用户填写的email是正确格式？为什么前端做了验证，后端还要做？
 
@@ -8,7 +20,13 @@
 
 3、你知道png和jpg格式的区别吗？
 
+png是无损的，文件大
+
+jpg牺牲画质，文件小
+
 4、留言板功能是如何防止我输入脚本进行攻击的？（脚本比如<script>alert(1)</script>）。为什么单引号过滤，双引号不过滤？
+
+过滤一些特殊符号，防止XSS攻击。
 
 5、说一下你对MVC的理解？向服务器请求放在MVC的哪个里面？什么是mvvm？Observer设计模式是啥？干什么用的？
 
@@ -18,7 +36,25 @@
 
 8、Vue 的父子组件是如何通信的？儿子如何向父亲传数据？
 
-9、JSONP是如何实现的？
+9、JSONP是如何实现的？JSONP为什么不支持POST
+
+浏览器动态创建script标签，src指向服务器地址，同时传一个查询参数?callback=（function+随机数），服务器根据查询参数，构造一个响应，浏览器收到响应，就会执行对应的函数，从而拿到数据。
+
+因为JSONP是通过动态创建script实现的，而动态创建script只能是GET，不能是POST。
+
+jQuery的jsonp，jsonp和ajax没关系，为什么jQuery这样弄jsonp
+
+```
+$.ajax({
+	url: 'http://jack.com:8002/pay',
+	dataType: 'jsonp',
+	success: function(response){
+		if(response === 'success'){
+			console.log(1)
+		}
+	}
+})
+```
 
 10、闭包是什么？
 
@@ -34,7 +70,35 @@
 
 16、前端工程化，你用的什么前端工程化的工具？webpack的loader是什么？干什么用的？
 
+webpack允许我们使用loader来处理文件
+
+webpack常用的loader
+
+样式：style-loader、css-loader、less-loader、sass-loader等
+
+文件：raw-loader、file-loader 、url-loader等
+
+编译：babel-loader、coffee-loader 、ts-loader等
+
+校验测试：mocha-loader、jshint-loader 、eslint-loader等
+
 17、less和scss的语法你了解吗？在scss里面你如何声明一个mixin，怎么使用？
+
+```
+@mixin box($width:100px, $height:100px) {
+    width: $width;
+    height: $height;
+    box-shadow: 0 0 5px #000;
+    margin: 10px;
+}
+@include box(300px,300px);
+
+%box {
+    box-shadow: 0 0 5px #000;
+    margin: 10px;
+}
+@extend %box;
+```
 
 18、用原型写过class吗？prototype里面的方法和this里面的方法有什么区别？
 
@@ -49,6 +113,22 @@
 23、Vue生成的实例，他的原型在哪里？
 
 24、ajax用原生js 怎么写？
+
+```
+  let request = new XMLHttpRequest()
+  // open()函数的三个参数：请求方式、请求地址、是否异步请求(同步请求的情况极少，至今还没用到过)；
+  request.open('get', '/xxx') // 配置request
+  request.send()
+  request.onreadystatechange = ()=>{
+    if(request.readyState === 4){ 
+      if(request.status >= 200 && request.status < 300){
+        console.log('说明请求成功')
+      }else if(request.status >= 400){
+        console.log('说明请求失败') 
+      }
+    }
+  }
+```
 
 25、HTML5里的section和article有什么区别？
 
