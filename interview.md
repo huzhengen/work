@@ -36,7 +36,29 @@ jpg牺牲画质，文件小
 
 8、Vue 的父子组件是如何通信的？儿子如何向父亲传数据？
 
-9、JSONP是如何实现的？JSONP为什么不支持POST
+8、用了vue的哪些周边、全家桶？Vue Router vuex，vue响应式原理，你知道vue3会怎么更新这个api吗（object.defineProperty）？
+
+8、axios拦截器了解吗？
+
+8、Vue computed、watch、methods，这三个有什么区别？watch、computed有缓存吗？watch和computed还有其他实用场景的区别吗？
+
+8、Vue.$set知道吗，用过吗？这个api是干嘛的？
+
+8、VueRouter路由守卫了解吗？
+
+8、Vuex用的比较多的api是什么？mutation和action的区别？
+
+9、计数排序、选择排序、冒泡排序
+
+9、HTTP协议缓存有哪些？expire、cache-control，怎么用？如果一个文件被cache-control缓存了1年，这个css的状态码，请求状态的什么样的？通过304做到类似的效果知道吗？（ETag，LastModified）
+
+9、有尝试封装axios吗？封装axios。usermodel.create、usermodel.delete，怎么封装？
+
+9、小程序的文件格式？最主要的一个文件app.json。小程序封装接口？小程序相对于app、网页有什么优劣？请求封装、文件大小限制？
+
+9、数据可视化常用的最入门的库有哪些吗？听说过echarts、d3.js吗？
+
+9、JSONP是如何实现的？JSONP为什么不支持POST？cors说下？
 
 浏览器动态创建script标签，src指向服务器地址，同时传一个查询参数?callback=（function+随机数），服务器根据查询参数，构造一个响应，浏览器收到响应，就会执行对应的函数，从而拿到数据。
 
@@ -56,7 +78,7 @@ $.ajax({
 })
 ```
 
-10、闭包是什么？
+10、闭包是什么？作用有哪些？用过立即执行函数吗？ES6的语法还用过哪些？
 
 11、响应式实现方式？
 
@@ -104,7 +126,9 @@ webpack常用的loader
 
 19、用原型链写继承，怎么写？class怎么写？class的继承怎么写？
 
-20、Promise是做什么的？一般怎么用？
+20、Promise是做什么的？一般怎么用？会自己写promise吗？setTimeout封装成一个函数，用promise。promise的api，了解过吗，promise.race，promise.all，什么时候成功，什么时候失败？
+
+20、ES6里的getter、setter了解吗？
 
 21、Vue组件的生命周期的哪些钩子函数
 
