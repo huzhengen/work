@@ -75,6 +75,44 @@ data: {
 
 当 v-bind:style 使用需要添加浏览器引擎前缀的 CSS 属性时，如 transform，Vue.js 会自动侦测并添加相应的前缀。
 
+### 条件渲染
+
+Vue 为你提供了一种方式来表达“这两个元素是完全独立的，不要复用它们”。只需添加一个具有唯一值的 key 属性即可：
+
+```
+<template v-if="loginType === 'username'">
+  <label>Username</label>
+  <input placeholder="Enter your username" key="username-input">
+</template>
+<template v-else>
+  <label>Email</label>
+  <input placeholder="Enter your email address" key="email-input">
+</template>
+```
+
+不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS 属性 display。
+
+一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
+
+> 注意，v-show 不支持 <template> 元素，也不支持 v-else。
+
+### 列表渲染
+
+```
+<li v-for="item in items">
+	{{ item.message }}
+</li>
+v-for="(item, index) in items"
+v-for="item of items"
+v-for="(value, key) in object"
+v-for="(value, key, index) in object"
+:key="item.id"
+```
+
+> 不要使用对象或数组之类的非原始类型值作为 v-for 的 key。用字符串或数类型的值取而代之。
+
+> 在遍历对象时，是按 Object.keys() 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下是一致的。
+
 ### 组件
 
 在 Vue 里，一个组件本质上是一个拥有预定义选项的一个 Vue 实例。
