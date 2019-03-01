@@ -113,6 +113,33 @@ v-for="(value, key, index) in object"
 
 > 在遍历对象时，是按 Object.keys() 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下是一致的。
 
+数组更新检测
+
+变异方法：
+
+Vue 包含一组观察数组的变异方法，所以它们也将会触发视图更新。这些方法如下：
+
+push()、pop()、shift()、unshift()、splice()、sort()、reverse()、
+
+非变异方法：filter(), concat() 和 slice() 。这些不会改变原始数组，但总是返回一个新数组。
+
+```
+// Vue.set
+Vue.set(vm.items, indexOfItem, newValue)
+// Array.prototype.splice
+vm.items.splice(indexOfItem, 1, newValue)
+vm.$set(vm.items, indexOfItem, newValue)
+```
+
+对于已经创建的实例，Vue 不能动态添加根级别的响应式属性。但是，可以使用 Vue.set(object, key, value) 方法向嵌套对象添加响应式属性。
+
+```
+Vue.set(vm.userProfile, 'age', 27)
+vm.$set(vm.userProfile, 'age', 27)
+```
+
+当它们处于同一节点，v-for 的优先级比 v-if 更高，这意味着 v-if 将分别重复运行于每个 v-for 循环中。
+
 ### 组件
 
 在 Vue 里，一个组件本质上是一个拥有预定义选项的一个 Vue 实例。
