@@ -10,6 +10,8 @@ canvas video audio
 
 1、meta viewport是做什么用的？怎么写？
 
+`<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">`
+
 1、Canvas有哪些API？Canvas是如何进行绘制的？比如，如何获取到Canvas的上下文？getContext的参数是什么？Canvas和SVG的区别了解吗？
 
 fillStyle
@@ -28,7 +30,7 @@ getContext() 方法来访问绘画上下文
 
 2、用video的时候会加什么属性？
 
-src autoplay poster track
+src autoplay poster track controls height loop width
 
 2、请问什么是H5
 
@@ -88,6 +90,45 @@ https://www.kancloud.cn/yunye/axios/234845
 
 https://createwj.github.io/2018/05/21/106.axioslan%E6%8B%A6%E6%88%AA%E5%99%A8/
 
+https://juejin.im/post/5bab739af265da0aa3593177
+
+```
+import axios from 'axios';
+import router from './router';
+
+// axios 配置
+axios.defaults.timeout = 8000;
+axios.defaults.baseURL = 'https://api.github.com';
+
+// http request 拦截器
+axios.interceptors.request.use(
+  config => {
+    if (localStorage.token) { //判断token是否存在
+      config.headers.Authorization = localStorage.token;  //将token设置成请求头
+    }
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+  }
+);
+
+// http response 拦截器
+axios.interceptors.response.use(
+  response => {
+    if (response.data.errno === 999) {
+      router.replace('/');
+      console.log("token过期");
+    }
+    return response;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
+export default axios;
+```
+
 8、Vue computed、watch、methods，这三个有什么区别？watch、computed有缓存吗？watch和computed还有其他实用场景的区别吗？
 
 8、Vue.$set知道吗，用过吗？这个api是干嘛的？
@@ -106,7 +147,7 @@ https://createwj.github.io/2018/05/21/106.axioslan%E6%8B%A6%E6%88%AA%E5%99%A8/
 
 9、数据可视化常用的最入门的库有哪些吗？听说过echarts、d3.js吗？
 
-9、什么是sjonp，什么是cors，什么是跨域？JSONP是如何实现的？JSONP为什么不支持POST？cors说下？
+9、什么是jonp，什么是cors，什么是跨域？JSONP是如何实现的？JSONP为什么不支持POST？cors说下？
 
 浏览器动态创建script标签，src指向服务器地址，同时传一个查询参数?callback=（function+随机数），服务器根据查询参数，构造一个响应，浏览器收到响应，就会执行对应的函数，从而拿到数据。
 
@@ -126,7 +167,30 @@ $.ajax({
 })
 ```
 
+CORS
+
+Cross-Origin Resource Sharing
+
+跨域资源共享
+
+`Access-Control-Allow-Origin`
+
 10、闭包是什么？作用有哪些？用过立即执行函数吗？是什么？ES6的语法还用过哪些？分别怎么用？class、promise
+
+https://zhuanlan.zhihu.com/p/22486908
+
+闭包
+
+比如一个立即执行函数里面，声明一个变量，一个函数，函数里用到这个变量，函数和函数内能访问到的变量，就是闭包
+
+闭包的作用   闭包常常用来「间接访问一个变量」。换句话说，「隐藏一个变量」。
+
+立即执行函数就是    声明一个匿名函数   马上调用这个匿名函数
+
+立即执行函数有什么用？  只有一个作用：创建一个独立的作用域。
+
+这个作用域里面的变量，外面访问不到（即避免「变量污染」）。
+
 
 10、call apply bind 区别
 
