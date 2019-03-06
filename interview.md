@@ -201,6 +201,14 @@ bind()方法创建一个新的函数，在调用时设置this关键字为提供�
 
 10、Promise是做什么的？一般怎么用？手写一个promise？会自己写promise吗？setTimeout封装成一个函数，用promise。promise的api，了解过吗，promise.race，promise.all，什么时候成功，什么时候失败？
 
+Promise 最直接的好处就是链式调用。
+
+`new Promise( function(resolve, reject) {...} /* executor */  );`
+
+Promise.all获得的成功结果的数组里面的数据顺序和Promise.all接收到的数组顺序是一致的，即p1的结果在前，即便p1的结果获取的比p2要晚。
+
+Promise.race([p1, p2, p3])里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态。
+
 10、ES6里的getter、setter了解吗？
 
 11、手写函数防抖和函数节流？
