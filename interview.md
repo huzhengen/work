@@ -80,6 +80,26 @@ jpg牺牲画质，文件小
 
 7、Vue 的双向绑定是如何实现的？（Object.defineProperty）v-model相当于哪两个指令？（v-bind:value，监听一个input事件）
 
+Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
+
+`Object.defineProperty(obj, prop, descriptor)`
+
+当你把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 `Object.defineProperty` 把这些属性全部转为 getter/setter。Object.defineProperty 是 ES5 中一个无法 shim 的特性，这也就是为什么 Vue 不支持 IE8 以及更低版本浏览器。
+
+每个组件实例都有相应的 watcher 实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用时，会通知 watcher 重新计算，从而致使它关联的组件得以更新。
+
+Vue 不允许在已经创建的实例上动态添加新的根级响应式属性 (root-level reactive property)。然而它可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上：
+
+```
+Vue.set(vm.someObject, 'b', 2)
+```
+
+您还可以使用 vm.$set 实例方法，这也是全局 Vue.set 方法的别名：
+
+```
+this.$set(this.someObject,'b',2)
+```
+
 8、Vue 的父子组件是如何通信的？儿子如何向父亲传数据？
 
 8、用了vue的哪些周边、全家桶？Vue Router vuex，vue响应式原理，你知道vue3会怎么更新这个api吗（object.defineProperty）？
