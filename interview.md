@@ -1,6 +1,18 @@
 # interview
 
-1、Canvas有哪些API？比如，如何获取到Canvas的上下文？getContext的参数是什么？Canvas和SVG的区别了解吗？
+1、你是如何理解HTML语义化的？你用过哪些HTML5标签？
+
+header main footer article
+
+canvas video audio
+
+比如，段落要写成p标签，标题要写成h1-h6
+
+1、meta viewport是做什么用的？怎么写？
+
+1、Canvas有哪些API？Canvas是如何进行绘制的？比如，如何获取到Canvas的上下文？getContext的参数是什么？Canvas和SVG的区别了解吗？
+
+fillStyle
 
 fillRect 填充矩形
 
@@ -13,6 +25,38 @@ beginPath、closePath、stroke、fill、moveTo、lineTo
 getContext() 方法来访问绘画上下文
 
 `var ctx = canvas.getContext('2d');`
+
+2、用video的时候会加什么属性？
+
+src autoplay poster track
+
+2、请问什么是H5
+
+2、两种盒模型分别说一下？区别？哪个好？为什么border-box比content-box好呢？
+
+border-box  content-box   那一种写起来更方便
+
+2、如何垂直居中？
+
+jscode.me search
+
+css回溯机制
+
+2、flex怎么用？常用的属性有哪些？
+
+2、BFC是什么？
+
+块级格式化上下文   举例
+
+一个div使用overflow：hidden，那么里面的浮动元素就会被他包裹起来。
+
+2、css选择器优先级？
+
+越具体优先级越高、写在后面的覆盖写在前面的、！important最高但要少用
+
+2、清除浮动说一下？
+
+代码 .clearfix{content:'';display:block/table;clear:both}
 
 2、一个用户完整的注册流程是怎样的？如何知道用户填写的email是正确格式？为什么前端做了验证，后端还要做？
 
@@ -40,6 +84,10 @@ jpg牺牲画质，文件小
 
 8、axios拦截器了解吗？
 
+https://www.kancloud.cn/yunye/axios/234845
+
+https://createwj.github.io/2018/05/21/106.axioslan%E6%8B%A6%E6%88%AA%E5%99%A8/
+
 8、Vue computed、watch、methods，这三个有什么区别？watch、computed有缓存吗？watch和computed还有其他实用场景的区别吗？
 
 8、Vue.$set知道吗，用过吗？这个api是干嘛的？
@@ -58,7 +106,7 @@ jpg牺牲画质，文件小
 
 9、数据可视化常用的最入门的库有哪些吗？听说过echarts、d3.js吗？
 
-9、JSONP是如何实现的？JSONP为什么不支持POST？cors说下？
+9、什么是sjonp，什么是cors，什么是跨域？JSONP是如何实现的？JSONP为什么不支持POST？cors说下？
 
 浏览器动态创建script标签，src指向服务器地址，同时传一个查询参数?callback=（function+随机数），服务器根据查询参数，构造一个响应，浏览器收到响应，就会执行对应的函数，从而拿到数据。
 
@@ -78,7 +126,112 @@ $.ajax({
 })
 ```
 
-10、闭包是什么？作用有哪些？用过立即执行函数吗？ES6的语法还用过哪些？
+10、闭包是什么？作用有哪些？用过立即执行函数吗？是什么？ES6的语法还用过哪些？分别怎么用？class、promise
+
+10、call apply bind 区别
+
+10、Promise是做什么的？一般怎么用？手写一个promise？会自己写promise吗？setTimeout封装成一个函数，用promise。promise的api，了解过吗，promise.race，promise.all，什么时候成功，什么时候失败？
+
+10、ES6里的getter、setter了解吗？
+
+11、手写函数防抖和函数节流？
+
+```
+防抖
+带着一起做
+let timerId = null
+button.onclick = function(){
+	if(timerId){
+		window.clearTimeout(timerId)
+	}
+	timerId = setTimeout(()=>{
+		fn()
+		timerId = null
+	}, 5000)
+}
+function fn(){}
+```
+
+```
+节流：
+let cd = false
+button.onclick = function(){
+	if(!cd){
+		fn()
+		cd = true
+		let timerId = setTimeout(()=>{
+			cd = false
+		}, 3000)
+	}
+}
+function fn(){}
+```
+
+11、手写ajax？ajax用原生js 怎么写？
+
+```
+let request = new XMLHttpRequest()
+// open()函数的三个参数：请求方式、请求地址、是否异步请求(同步请求的情况极少，至今还没用到过)；
+request.open('get', '/xxx') // 配置request
+request.onreadystatechange = ()=>{
+if(request.readyState === 4){ 
+  if(request.status >= 200 && request.status < 300){
+    console.log('说明请求成功')
+  }else if(request.status >= 400){
+    console.log('说明请求失败') 
+  }
+}
+}
+request.send()
+```
+
+11、async/await怎么用？如何捕获异常？遇到reject怎么办？
+
+11、如何实现深拷贝
+
+递归、判断类型、检查循环引用（环）、不可能拷贝__proto__
+
+12、如何用正则实现trim()
+
+```
+function trim(str){
+	return string.replace(/^\s+|\s+$/g, '')
+}
+```
+
+11、不用class如何实现继承？用class如何实现？用原型链写继承，怎么写？class怎么写？class的继承怎么写？
+
+```
+function Animal(){
+	this.a = 1
+}
+Animal.prototype.move = function(){}
+function Dog(){
+	Animal.apply(this, arguments)
+	this.d = 2
+}
+let f = function(){}
+f.prototype = Animal.prototype
+Dog.prototype = new f()
+Dog.prototype.constructor = Dog
+Dog.say = function(){}
+```
+
+```
+class Dog extends Animal{
+	constructor(){
+		super()
+	}
+}
+```
+
+11、如何实现数组去重？
+
+使用hash
+
+`[...new Set(array)]`
+
+WeakMap（支持所有类型的去重）
 
 11、响应式实现方式？
 
@@ -124,35 +277,13 @@ webpack常用的loader
 
 18、用原型写过class吗？prototype里面的方法和this里面的方法有什么区别？
 
-19、用原型链写继承，怎么写？class怎么写？class的继承怎么写？
-
-20、Promise是做什么的？一般怎么用？会自己写promise吗？setTimeout封装成一个函数，用promise。promise的api，了解过吗，promise.race，promise.all，什么时候成功，什么时候失败？
-
-20、ES6里的getter、setter了解吗？
+21、什么是函数式编程？
 
 21、Vue组件的生命周期的哪些钩子函数
 
 22、Vue组件之间消息传递是怎样传的？（父子、兄弟）。给弟弟传一个消息怎么传？在接受子组件的时候，还额外的想再写一个参数，怎么传？不相关的组件之间怎么传递？
 
 23、Vue生成的实例，他的原型在哪里？
-
-24、ajax用原生js 怎么写？
-
-```
-  let request = new XMLHttpRequest()
-  // open()函数的三个参数：请求方式、请求地址、是否异步请求(同步请求的情况极少，至今还没用到过)；
-  request.open('get', '/xxx') // 配置request
-  request.send()
-  request.onreadystatechange = ()=>{
-    if(request.readyState === 4){ 
-      if(request.status >= 200 && request.status < 300){
-        console.log('说明请求成功')
-      }else if(request.status >= 400){
-        console.log('说明请求失败') 
-      }
-    }
-  }
-```
 
 25、HTML5里的section和article有什么区别？
 
@@ -163,3 +294,5 @@ webpack常用的loader
 28、原生js如何获取一个节点的兄弟节点，不包括他自己？
 
 29、什么是事件委托？
+
+30、Eventloop说一下？
