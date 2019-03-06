@@ -191,8 +191,13 @@ https://zhuanlan.zhihu.com/p/22486908
 
 这个作用域里面的变量，外面访问不到（即避免「变量污染」）。
 
-
 10、call apply bind 区别
+
+call()方法接受的是若干个参数的列表，
+
+而apply()方法接受的是一个包含多个参数的数组。
+
+bind()方法创建一个新的函数，在调用时设置this关键字为提供的值。并在调用新函数时，将给定参数列表作为原函数的参数序列的前若干项。
 
 10、Promise是做什么的？一般怎么用？手写一个promise？会自己写promise吗？setTimeout封装成一个函数，用promise。promise的api，了解过吗，promise.race，promise.all，什么时候成功，什么时候失败？
 
@@ -360,3 +365,7 @@ webpack常用的loader
 29、什么是事件委托？
 
 30、Eventloop说一下？
+
+31、vue ssr
+
+预渲染 如果你使用 webpack，你可以使用 prerender-spa-plugin 轻松地添加预渲染。
