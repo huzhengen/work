@@ -170,40 +170,6 @@ new Fn()   //  this 指向新的对象
 箭头函数 fn = () => {}  // this指向的是外面的this
 ```
 
-9、有尝试封装axios吗？封装axios。   usermodel.create、usermodel.delete，怎么封装？
-
-9、小程序的文件格式？最主要的一个文件app.json。小程序封装接口？小程序相对于app、网页有什么优劣？请求封装、文件大小限制？
-
-9、数据可视化常用的最入门的库有哪些吗？听说过echarts、d3.js吗？
-
-9、什么是jonp，什么是cors，什么是跨域？JSONP是如何实现的？JSONP为什么不支持POST？cors说下？
-
-浏览器动态创建script标签，src指向服务器地址，同时传一个查询参数?callback=（function+随机数），服务器根据查询参数，构造一个响应，浏览器收到响应，就会执行对应的函数，从而拿到数据。
-
-因为JSONP是通过动态创建script实现的，而动态创建script只能是GET，不能是POST。
-
-jQuery的jsonp，jsonp和ajax没关系，为什么jQuery这样弄jsonp
-
-```
-$.ajax({
-	url: 'http://jack.com:8002/pay',
-	dataType: 'jsonp',
-	success: function(response){
-		if(response === 'success'){
-			console.log(1)
-		}
-	}
-})
-```
-
-CORS
-
-Cross-Origin Resource Sharing
-
-跨域资源共享
-
-`Access-Control-Allow-Origin`
-
 10、闭包是什么？作用有哪些？用过立即执行函数吗？是什么？
 
 https://zhuanlan.zhihu.com/p/22486908
@@ -220,6 +186,62 @@ https://zhuanlan.zhihu.com/p/22486908
 
 这个作用域里面的变量，外面访问不到（即避免「变量污染」）。
 
+9、什么是jonp，什么是cors，什么是跨域？JSONP是如何实现的？JSONP为什么不支持POST？cors说下？
+
+跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器施加的安全限制。
+
+所谓同源是指，域名，协议，端口均相同
+
+浏览器动态创建script标签，src指向服务器地址，同时传一个查询参数?callback=（function+随机数），服务器根据查询参数，构造一个响应，浏览器收到响应，就会执行对应的函数，从而拿到数据。
+
+因为JSONP是通过动态创建script实现的，而动态创建script只能是GET，不能是POST。
+
+jQuery的jsonp，jsonp和ajax没关系，为什么jQuery这样弄jsonp
+
+```
+$.ajax({
+  url: 'http://jack.com:8002/pay',
+  dataType: 'jsonp',
+  success: function(response){
+    if(response === 'success'){
+      console.log(1)
+    }
+  }
+})
+```
+
+CORS
+
+Cross-Origin Resource Sharing
+
+跨域资源共享
+
+`Access-Control-Allow-Origin`
+
+```
+header('Access-Control-Allow-Origin:*');//允许所有来源访问
+
+header('Access-Control-Allow-Method:POST,GET');//允许访问的方式
+```
+
+11、async/await怎么用？如何捕获异常？遇到reject怎么办？
+
+当调用一个 async 函数时，会返回一个 Promise 对象。当这个 async 函数返回一个值时，Promise 的 resolve 方法会负责传递这个值；当 async 函数抛出异常时，Promise 的 reject 方法也会传递这个异常值。
+
+async 函数中可能会有 await 表达式，这会使 async 函数暂停执行，等待 Promise  的结果出来，然后恢复async函数的执行并返回解析值（resolved）。
+
+注意， await 关键字仅仅在 async function中有效。如果在 async function函数体外使用 await ，你只会得到一个语法错误（SyntaxError）。
+
+11、如何实现深拷贝
+
+关键词：递归、判断类型、检查循环引用（环）、不可能拷贝__proto__（拷贝原型是十分浪费内存的）
+
+9、有尝试封装axios吗？封装axios。   usermodel.create、usermodel.delete，怎么封装？
+
+9、小程序的文件格式？最主要的一个文件app.json。小程序封装接口？小程序相对于app、网页有什么优劣？请求封装、文件大小限制？
+
+9、数据可视化常用的最入门的库有哪些吗？听说过echarts、d3.js吗？
+
 10、call apply bind 区别
 
 call()方法接受的是若干个参数的列表，
@@ -227,12 +249,6 @@ call()方法接受的是若干个参数的列表，
 而apply()方法接受的是一个包含多个参数的数组。
 
 bind()方法创建一个新的函数，在调用时设置this关键字为提供的值。并在调用新函数时，将给定参数列表作为原函数的参数序列的前若干项。
-
-11、async/await怎么用？如何捕获异常？遇到reject怎么办？
-
-11、如何实现深拷贝
-
-递归、判断类型、检查循环引用（环）、不可能拷贝__proto__
 
 12、如何用正则实现trim()
 
@@ -444,3 +460,5 @@ export default axios;
 9、计数排序、选择排序、冒泡排序
 
 9、HTTP协议缓存有哪些？expire、cache-control，怎么用？如果一个文件被cache-control缓存了1年，这个css的状态码，请求状态的什么样的？通过304做到类似的效果知道吗？（ETag，LastModified）
+
+[ES2016, 2017和2018到底有哪些新功能？](https://mp.weixin.qq.com/s/A4Z8D3IlSsw1XnP3wFbJHg)
