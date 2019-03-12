@@ -79,7 +79,7 @@ flex、position、
 
 代码 .clearfix:after{content:'';display:block/table;clear:both}
 
-### JS 其他
+### JS
 
 9、ES6的语法还用过哪些？分别怎么用？ES6里的getter、setter了解吗？
 
@@ -164,6 +164,16 @@ button.onclick = function(){
   }, 5000)
 }
 function fn(){}
+--------------------------------------
+<input id="uid" onKeyUp="keyup()" />
+
+let timer
+let keyup = function(){
+    clearTimeout(timer)
+    timer = setTimeout(function(){
+        // 将value发送给后端验证
+    }, 800)
+}
 ```
 
 ```
@@ -179,6 +189,18 @@ button.onclick = function(){
   }
 }
 function fn(){}
+--------------------------------------
+let cando = true
+window.onscroll = function(){
+    if(!cando){
+        return
+    }
+    cando = false
+    setTimeout(function(){
+        hightlightMenu()
+        cando = true
+    }, 500)
+}
 ```
 
 9、手写ajax？ajax用原生js 怎么写？
@@ -354,6 +376,31 @@ function fn2(arr){
 `let newArr = [...new Set(array)]`
 
 WeakMap（支持所有类型的去重）
+
+### DOM
+
+9、事件委托？用mouse事件写一个可拖曳的div？
+
+```
+function(element, eventType, selector, fn) {
+  element.addEventListener(eventType, e => {
+    let el = e.target
+    while (!el.matches(selector)) {
+      if (element === el) {
+        el = null
+        break
+      }
+      el = el.parentNode
+    }
+    el && fn.call(el, e, el)
+  })
+  return element
+}
+```
+
+### HTTP
+
+### 其他
 
 9、有尝试封装axios吗？封装axios。   usermodel.create、usermodel.delete，怎么封装？
 
