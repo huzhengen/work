@@ -107,10 +107,51 @@ Promise.all获得的成功结果的数组里面的数据顺序和Promise.all接�
 
 Promise.race([p1, p2, p3])里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态。
 
+手写promise
+
+```
+function Promise(executor) {
+    let self = this;
+    self.status = 'pending'; //等待态
+    self.value = undefined;  //成功的返回值
+    self.reason = undefined; //失败的原因
+
+    function resolve(value){
+        if(self.status === 'pending'){
+            self.status = 'resolved';
+            self.value = value;
+        }
+    }
+    function reject(reason) {
+        if(self.status === 'pending') {
+            self.status = 'rejected';
+            self.reason = reason;
+        }
+    }
+    try{
+        executor(resolve, reject);
+    }catch(e){
+        reject(e);// 捕获时发生异常，就直接失败
+    }
+}
+//onFufiled 成功的回调
+//onRejected 失败的回调
+Promise.prototype.then = function (onFufiled, onRejected) {
+    let self = this;
+    if(self.status === 'resolved'){
+        onFufiled(self.value);
+    }
+    if(self.status === 'rejected'){
+        onRejected(self.reason);
+    }
+}
+module.exports = Promise;
+```
+
 11、手写函数防抖和函数节流？
 
 ```
-防抖
+防抖（debounce）
 带着一起做
 let timerId = null
 button.onclick = function(){
@@ -126,7 +167,7 @@ function fn(){}
 ```
 
 ```
-节流：
+节流（throttle）
 let cd = false
 button.onclick = function(){
   if(!cd){
@@ -236,6 +277,84 @@ async 函数中可能会有 await 表达式，这会使 async 函数暂停执行
 
 关键词：递归、判断类型、检查循环引用（环）、不可能拷贝__proto__（拷贝原型是十分浪费内存的）
 
+深拷贝和浅拷贝是只针对Object和Array这样的复杂类型的。
+
+```
+var target = {a: 1, b: 1, c: {ca: 11, cb: 12, cc: 13}};
+var targetCopy = JSON.parse(JSON.stringify(target));
+JSON.parse()和JSON.stringify()能正确处理的对象只有Number、String、Array等能够被json表示的数据结构，因此函数这种不能被json表示的类型将不能被正确处理。
+```
+
+https://segmentfault.com/a/1190000008637489
+
+12、如何用正则实现trim()
+
+```
+function trim(str){
+  return string.replace(/^\s+|\s+$/g, '')
+}
+```
+
+11、不用class如何实现继承？用class如何实现？class怎么写？class的继承怎么写？
+
+```
+function Animal(){
+  this.a = 1
+}
+Animal.prototype.move = function(){}
+function Dog(){
+  Animal.apply(this, arguments)  // 1
+  this.d = 2
+}
+let f = function(){}  // 2
+f.prototype = Animal.prototype // 2
+Dog.prototype = new f() // 2
+Dog.prototype.constructor = Dog // 3
+Dog.say = function(){}
+```
+
+```
+class Dog extends Animal{
+  constructor(){
+    super()
+  }
+}
+```
+
+11、如何实现数组去重？
+
+```
+function fn1(arr){
+  let tempArr = []
+  for(let i=0; i<arr.length; i++){
+    if(tempArr.indexOf(arr[i]) === -1){
+      tempArr.push(arr[i])
+    }
+  }
+  return tempArr
+}
+```
+
+```
+function fn2(arr){
+  let tempArr = []
+  let hash = {}
+  for(let i=0; i<arr.length; i++){
+    if(!hash[arr[i]]){
+      hash[arr[i]] = true
+      tempArr.push(arr[i])
+    }
+  }
+  return tempArr
+}
+```
+
+使用hash
+
+`let newArr = [...new Set(array)]`
+
+WeakMap（支持所有类型的去重）
+
 9、有尝试封装axios吗？封装axios。   usermodel.create、usermodel.delete，怎么封装？
 
 9、小程序的文件格式？最主要的一个文件app.json。小程序封装接口？小程序相对于app、网页有什么优劣？请求封装、文件大小限制？
@@ -249,48 +368,6 @@ call()方法接受的是若干个参数的列表，
 而apply()方法接受的是一个包含多个参数的数组。
 
 bind()方法创建一个新的函数，在调用时设置this关键字为提供的值。并在调用新函数时，将给定参数列表作为原函数的参数序列的前若干项。
-
-12、如何用正则实现trim()
-
-```
-function trim(str){
-	return string.replace(/^\s+|\s+$/g, '')
-}
-```
-
-11、不用class如何实现继承？用class如何实现？用原型链写继承，怎么写？class怎么写？class的继承怎么写？
-
-```
-function Animal(){
-	this.a = 1
-}
-Animal.prototype.move = function(){}
-function Dog(){
-	Animal.apply(this, arguments)
-	this.d = 2
-}
-let f = function(){}
-f.prototype = Animal.prototype
-Dog.prototype = new f()
-Dog.prototype.constructor = Dog
-Dog.say = function(){}
-```
-
-```
-class Dog extends Animal{
-	constructor(){
-		super()
-	}
-}
-```
-
-11、如何实现数组去重？
-
-使用hash
-
-`[...new Set(array)]`
-
-WeakMap（支持所有类型的去重）
 
 11、响应式实现方式？
 
