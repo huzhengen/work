@@ -569,6 +569,16 @@ store.commit('increment')
 
 深入响应式原理
 
+当你把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。
+
+受现代 JavaScript 的限制 (而且 Object.observe 也已经被废弃)，Vue 不能检测到对象属性的添加或删除。需要用`Vue.set(object, key, value)`或者`this.$set(this.someObject,'b',2)`
+
+3、Vue Router 你怎么用的？
+
+Vue Router是 Vue.js 官方的路由管理器
+
+动态路由匹配、重定向和别名、HTML5 History模式、导航守卫、路由懒加载
+
 ### 其他
 
 9、有尝试封装axios吗？封装axios。   usermodel.create、usermodel.delete，怎么封装？
