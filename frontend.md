@@ -480,7 +480,47 @@ computed是有缓存的，他只在属性变化的时候再去计算。watch没�
 
 computed是不加括号的，watch加括号的（用法上）
 
-2、Vue有哪些生命周期钩子函数？分别有什么用？
+2、Vue有哪些生命周期钩子函数？分别有什么用？Vue 那个生命周期进行数据请求？
+
+```
+beforeCreate 在创建组件之前做一些事情
+created 创建组件之后做一些事情 用来做一些创建时的初始化
+beforeMount 在挂载组件之前做一些事情
+mounted 在挂载组件之后做一些事情
+在mounted，做数据请求
+beforeUpdate 在更新组件之前做一些事情，
+updated 做一些更新之后的事情
+beforeDestroy
+destroyed
+```
+
+3、Vue 如何实现组件之间的通信
+
+父子组件：
+
+父亲通过props传递给孩子
+
+儿子传递给父亲 通过$emit('xxx', data)   $on('xxx', function(){})
+
+爷孙组件或者兄弟组件：eventBus
+
+```
+let eventBus = new Vue()
+eventBus.$emit()
+eventBus.$on()
+```
+
+更复杂的情况：Vuex
+
+2、Vuex你是怎么用的？
+
+Vuex是一个专为 Vue.js 应用程序开发的状态管理工具。
+
+核心概念：State Getter Mutation Action Module 分别怎么用？
+
+State 就是当前Vue对象存储的数据，所有组件需要用到的东西，可以认为是最原始的数据
+
+提交一个Mutation去修改一个值
 
 ### 其他
 
