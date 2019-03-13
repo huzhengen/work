@@ -400,6 +400,88 @@ function(element, eventType, selector, fn) {
 
 ### HTTP
 
+9、HTTP状态码
+
+200 OK 请求已成功
+
+301 Moved Permanently 被请求的资源已永久移动到新位置
+
+304 Not Modified 表示资源在由请求头中的If-Modified-Since或If-None-Match参数指定的这一版本之后，未曾被修改
+
+403 Forbidden 服务器已经理解请求，但是拒绝执行它
+
+404 Not Found 请求失败，请求所希望得到的资源未被在服务器上发现
+
+500 Internal Server Error 通用错误消息，服务器遇到了一个未曾预料的状况
+
+9、HTTP缓存有哪几种？ Expire和Cache-Control的区别？ ETag和Cache-Control的区别？
+
+关键词：ETag（MD5）、Expire（日期）、Cache-Control（max-age=600）
+
+Expire是在某个时间点过期，但是日期不靠谱，因为本地时间是可以调的
+
+Cache-Control 是多少秒内过期
+
+ETag是有请求的（304）
+
+Cache-Control是无请求的
+
+9、浏览器HTTP缓存 顺序是怎样的？先读哪里？后读哪里？
+
+9、GET和POST的区别？
+
+没有本质的区别，只是从语义上，GET是获取数据，POST是提交数据
+
+```
+//
+POST安全，GET不安全
+GET URL有长度限制，POST没有
+GET参数是放在URL，POST是放在消息体中
+GET只需要一个报文，POST需要两个以上
+```
+
+9、Cookie 、 LocalStorage 、 SessionStorage 、 Session
+
+```
+Cookie是服务器发给浏览器的一段字符串，浏览器在访问对应域名的时候，都要带上Cookie，Cookie是在浏览器上的
+Session是回话，表示浏览器和服务器一段时间内的回话，Session是在服务器上的
+Session一般是基于Cookie来实现的，就是把Session_ID放在cookie里面
+```
+
+```
+Cookie大小限制比较小，一般是4k， LocalStroage 一般有5M
+Cookie是用来存用户信息的，LocalStroage是用来存一些不重要的数据
+Cookie是会被发送到服务器上的，LocalStroage不发送到服务器
+```
+
+```
+LocalStroage 一般不会过期，SessionStorage 会在 Session 结束的时候过期
+```
+
+9、HTTP2和HTTP1的区别是什么？
+
+HTTP2是强制开启https的
+
+```
+HTTP2.0和HTTP1.X相比的新特性：
+新的二进制格式
+多路复用（MultiPlexing）
+header压缩
+服务端推送（server push）
+```
+
+### Vue
+
+1、watch 和 computed 的区别是什么？
+
+watch 是监听数据， computed 是计算属性，
+
+computed是有缓存的，他只在属性变化的时候再去计算。watch没有缓存
+
+computed是不加括号的，watch加括号的（用法上）
+
+2、Vue有哪些生命周期钩子函数？分别有什么用？
+
 ### 其他
 
 9、有尝试封装axios吗？封装axios。   usermodel.create、usermodel.delete，怎么封装？
