@@ -518,9 +518,56 @@ Vuex是一个专为 Vue.js 应用程序开发的状态管理工具。
 
 核心概念：State Getter Mutation Action Module 分别怎么用？
 
+mapState、
+
+通过在根实例中注册 store 选项，该 store 实例会注入到根组件下的所有子组件中，且子组件能通过 this.$store 访问到。
+
 State 就是当前Vue对象存储的数据，所有组件需要用到的东西，可以认为是最原始的数据
 
-提交一个Mutation去修改一个值
+Getter store 中定义“getter”（可以认为是 store 的计算属性）
+
+更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件
+
+Action类似于Mutation，但Action提交的是mutation，而不是直接变更状态
+
+Action可以进行异步操作。Action通过store.dispatch方法触发
+
+Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割：
+
+> Vuex 的状态存储是响应式的
+
+```
+Vue.use(Vuex)
+const store = new Vuex.Store({
+  state: {
+    weather: 'sunny',
+    firstName: 'Jim',
+    lastName: 'Green'
+  },
+  mutations:{
+    modifyWeather(state, n){
+      state.weather = 'rainy'
+    }
+  },
+  getters:{
+    fullName(state){
+      return state.firstName + state.lastName
+    }
+  },
+  actions:{
+    modifyWeather(context){
+      context.commit('modifyWeather')
+    }
+  }
+})
+store.commit('increment')
+```
+
+8、Vue 数据响应式怎么做到的？（双向绑定是怎么做到的？Vue不是双向绑定）
+
+双向绑定：v-mdel。
+
+深入响应式原理
 
 ### 其他
 
