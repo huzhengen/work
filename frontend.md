@@ -614,7 +614,37 @@ const Foo = () => import('./Foo.vue')
 
 ### Webpack
 
+1、有哪些常见的loader和plugin，你用过哪些？loader和plugin的区别是什么？
 
+```
+loader：
+pug-loader markdown-loader(html) 
+postcss-loader sass-loader less-loader style-loader(css)
+babel-loader eslint-loader(js)
+image-loader(image)
+file-loader、url-loader、source-map-loader、
+```
+
+```
+plugin:
+html-webpack-plugin(html)
+extract-text-plugin(css)
+define-plugin、commons-chunk-plugin、uglifyjs-webpack-plugin
+```
+
+loader是加载器、转换器，plugin是插件、扩展器
+
+2、如何按需加载代码？
+
+import('文件路径')
+
+3、如何提高构建速度？
+
+关键词：dll、code split、happypack
+
+4、转义出的文件过大怎么办？
+
+提取通用模块文件、压缩css/js/image、用动态加载的方式import()
 
 ### 其他
 
@@ -637,8 +667,6 @@ bind()方法创建一个新的函数，在调用时设置this关键字为提供�
 12、如果让你实现一个jQuery的addClass的api，你怎么实现？
 
 13、模块化了解过吗？
-
-14、webpack了解过吗？
 
 15、滚动事件，可以阻止他的默认事件吗？（滚轮事件？）
 
@@ -828,3 +856,7 @@ export default axios;
 1、never类型是什么？
 
 2、TypeScript 比起 JavaScript 有什么优点？
+
+### 安全
+
+1、什么是XSS？如何预防？什么是CSRF？如何预防？
