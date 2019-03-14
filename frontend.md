@@ -577,7 +577,44 @@ store.commit('increment')
 
 Vue Router是 Vue.js 官方的路由管理器
 
+```
+<router-link to="/foo">foo</router-link>
+
+<router-view></router-view>
+```
+
 动态路由匹配、重定向和别名、HTML5 History模式、导航守卫、路由懒加载
+
+```
+// $route.params、$route.query、$route.hash
+const router = new VueRouter({
+  routes: [
+    {path: '/user/:id', component: User}
+  ]
+})
+```
+
+当使用路由参数时，例如从 /user/foo 导航到 /user/bar，原来的组件实例会被复用。
+
+重定向 redirect `{path: '/a', redirect: '/b'}`
+
+别名 alias /a 的别名是 /b，意味着，当用户访问 /b 时，URL 会保持为 /b，但是路由匹配则为 /a，就像用户访问 /a 一样。
+
+vue-router 默认 hash 模式 —— 使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。
+
+hash —— 即地址栏 URL 中的 # 符号  hash 虽然出现在 URL 中，但不会被包括在 HTTP 请求中
+
+history —— 利用了 HTML5 History Interface 中新增的 pushState() 和 replaceState() 方法
+
+mode: 'history',  路由的 history 模式  需要后台配置支持
+
+router.beforeEach、beforeResolve 、afterEach、beforeEnter 
+
+const Foo = () => import('./Foo.vue')
+
+### Webpack
+
+
 
 ### 其他
 
@@ -765,3 +802,29 @@ export default axios;
 9、HTTP协议缓存有哪些？expire、cache-control，怎么用？如果一个文件被cache-control缓存了1年，这个css的状态码，请求状态的什么样的？通过304做到类似的效果知道吗？（ETag，LastModified）
 
 [ES2016, 2017和2018到底有哪些新功能？](https://mp.weixin.qq.com/s/A4Z8D3IlSsw1XnP3wFbJHg)
+
+### React
+
+1、受控组件和非受控组件的区别？
+
+2、生命周期函数有？分别什么用？Ajax请求在哪个阶段？
+
+3、React如何实现组件间通信？
+
+4、shouldComponentUpdate 有什么用？
+
+5、虚拟DOM是什么？
+
+6、什么是高阶组件？
+
+7、React diff的原理是什么？
+
+8、Redux是什么？
+
+9、connect的原理是什么？
+
+### TypeScript
+
+1、never类型是什么？
+
+2、TypeScript 比起 JavaScript 有什么优点？
