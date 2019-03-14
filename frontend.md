@@ -648,6 +648,41 @@ import('文件路径')
 
 ### 其他
 
+1、你遇到的最难的问题是什么？
+
+2、你在团队的突出贡献是什么？
+
+3、最近在关注什么新技术？有没有看什么源码？看了之后又什么记忆深刻的地方？
+
+3、`['1','2','3'].map(parseInt)` // [1, NaN, NaN]
+
+```
+相当于：
+parseInt('1', 0) // 1
+parseInt('2', 1) // NaN
+parseInt('3', 2) // NaN
+```
+
+3、`var a = {name: 'a'}; a.x = a = {}; 问a.x是多少？`
+
+```
+答案：undefined
+a.x = a = {}，这句代码分2步，第一步确定a是什么，第二步执行（执行顺序从右往左）。
+```
+
+3、(a == 1 && a == 2 && a == 3)可能为true吗？
+
+```
+const a = {
+  num: 0,
+  valueOf: function() {
+    return this.num += 1
+  }
+};
+const equality = (a==1 && a==2 && a==3);
+console.log(equality); // true
+```
+
 9、有尝试封装axios吗？封装axios。   usermodel.create、usermodel.delete，怎么封装？
 
 9、小程序的文件格式？最主要的一个文件app.json。小程序封装接口？小程序相对于app、网页有什么优劣？请求封装、文件大小限制？
