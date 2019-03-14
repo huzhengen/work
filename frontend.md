@@ -683,7 +683,54 @@ const equality = (a==1 && a==2 && a==3);
 console.log(equality); // true
 ```
 
-9、有尝试封装axios吗？封装axios。   usermodel.create、usermodel.delete，怎么封装？
+9、有尝试封装axios吗？封装axios。 usermodel.create、usermodel.delete，怎么封装？axios拦截器了解吗？
+
+Axios 是一个基于 promise 的 HTTP 库
+
+axios.get('/user', {params: {}}).then().catch()
+
+https://www.kancloud.cn/yunye/axios/234845
+
+https://createwj.github.io/2018/05/21/106.axioslan%E6%8B%A6%E6%88%AA%E5%99%A8/
+
+https://juejin.im/post/5bab739af265da0aa3593177
+
+```
+import axios from 'axios';
+import router from './router';
+
+// axios 配置
+axios.defaults.timeout = 8000;
+axios.defaults.baseURL = 'https://api.github.com';
+
+// http request 拦截器
+axios.interceptors.request.use(
+  config => {
+    if (localStorage.token) { //判断token是否存在
+      config.headers.Authorization = localStorage.token;  //将token设置成请求头
+    }
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+  }
+);
+
+// http response 拦截器
+axios.interceptors.response.use(
+  response => {
+    if (response.data.errno === 999) {
+      router.replace('/');
+      console.log("token过期");
+    }
+    return response;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
+export default axios;
+```
 
 9、小程序的文件格式？最主要的一个文件app.json。小程序封装接口？小程序相对于app、网页有什么优劣？请求封装、文件大小限制？
 
@@ -773,10 +820,6 @@ png是无损的，文件大
 
 jpg牺牲画质，文件小
 
-4、留言板功能是如何防止我输入脚本进行攻击的？（脚本比如<script>alert(1)</script>）。为什么单引号过滤，双引号不过滤？
-
-过滤一些特殊符号，防止XSS攻击。
-
 5、说一下你对MVC的理解？向服务器请求放在MVC的哪个里面？什么是mvvm？Observer设计模式是啥？干什么用的？
 
 6、LeanCloud是什么？
@@ -806,51 +849,6 @@ this.$set(this.someObject,'b',2)
 8、Vue 的父子组件是如何通信的？儿子如何向父亲传数据？
 
 8、用了vue的哪些周边、全家桶？Vue Router vuex，vue响应式原理，你知道vue3会怎么更新这个api吗（object.defineProperty）？
-
-8、axios拦截器了解吗？
-
-https://www.kancloud.cn/yunye/axios/234845
-
-https://createwj.github.io/2018/05/21/106.axioslan%E6%8B%A6%E6%88%AA%E5%99%A8/
-
-https://juejin.im/post/5bab739af265da0aa3593177
-
-```
-import axios from 'axios';
-import router from './router';
-
-// axios 配置
-axios.defaults.timeout = 8000;
-axios.defaults.baseURL = 'https://api.github.com';
-
-// http request 拦截器
-axios.interceptors.request.use(
-  config => {
-    if (localStorage.token) { //判断token是否存在
-      config.headers.Authorization = localStorage.token;  //将token设置成请求头
-    }
-    return config;
-  },
-  err => {
-    return Promise.reject(err);
-  }
-);
-
-// http response 拦截器
-axios.interceptors.response.use(
-  response => {
-    if (response.data.errno === 999) {
-      router.replace('/');
-      console.log("token过期");
-    }
-    return response;
-  },
-  error => {
-    return Promise.reject(error);
-  }
-);
-export default axios;
-```
 
 8、Vue computed、watch、methods，这三个有什么区别？watch、computed有缓存吗？watch和computed还有其他实用场景的区别吗？
 
@@ -895,3 +893,9 @@ export default axios;
 ### 安全
 
 1、什么是XSS？如何预防？什么是CSRF？如何预防？
+
+跨站请求伪造（英语：Cross-site request forgery）
+
+4、留言板功能是如何防止我输入脚本进行攻击的？（脚本比如<script>alert(1)</script>）。为什么单引号过滤，双引号不过滤？
+
+过滤一些特殊符号，防止XSS攻击。
