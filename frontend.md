@@ -732,6 +732,21 @@ axios.interceptors.response.use(
 export default axios;
 ```
 
+9、
+
+```
+let big = '123'
+let obj = {
+  big: '789',
+  showBig: function(){
+    return this.big
+  }
+}
+console.log(obj.showBig.call(big))
+答案：ƒ big() { [native code] }，不是undefined
+字符串的原型上有个big函数
+```
+
 9、小程序的文件格式？最主要的一个文件app.json。小程序封装接口？小程序相对于app、网页有什么优劣？请求封装、文件大小限制？
 
 9、数据可视化常用的最入门的库有哪些吗？听说过echarts、d3.js吗？
