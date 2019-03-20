@@ -927,6 +927,13 @@ this.$set(this.someObject,'b',2)
 说下Vue的生命周期？每个生命周期的作用？
 组件间传递怎么传？说下vuex？
 说下Vue Router？动态路由参数？钩子都有哪些？
+beforeEach
+afterEach
+beforeEnter
+beforeResolve
+beforeRouteEnter
+beforeRouteUpdate
+beforeRouteLeave
 说下闭包？闭包的坏处？
 说下浏览器缓存？他们的区别？各个的过期时间？
 做过单点登录吗？
