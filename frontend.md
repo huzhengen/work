@@ -583,7 +583,7 @@ Vue Router是 Vue.js 官方的路由管理器
 <router-view></router-view>
 ```
 
-动态路由匹配、重定向和别名、HTML5 History模式、导航守卫、路由懒加载
+动态路由匹配
 
 ```
 // $route.params、$route.query、$route.hash
@@ -596,9 +596,49 @@ const router = new VueRouter({
 
 当使用路由参数时，例如从 /user/foo 导航到 /user/bar，原来的组件实例会被复用。
 
+重定向和别名
+
 重定向 redirect `{path: '/a', redirect: '/b'}`
 
 别名 alias /a 的别名是 /b，意味着，当用户访问 /b 时，URL 会保持为 /b，但是路由匹配则为 /a，就像用户访问 /a 一样。
+
+路由组件传参
+
+在组件中使用 $route 会使之与其对应路由形成高度耦合，从而使组件只能在某些特定的 URL 上使用，限制了其灵活性。
+
+```
+const User = {
+  template: '<div>User {{ $route.params.id }}</div>'
+}
+const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User }
+  ]
+})
+```
+
+```
+const User = {
+  props: ['id'],
+  template: '<div>User {{ id }}</div>'
+}
+const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User, props: true },
+
+    // 对于包含命名视图的路由，你必须分别为每个命名视图添加 `props` 选项：
+    {
+      path: '/user/:id',
+      components: { default: User, sidebar: Sidebar },
+      props: { default: true, sidebar: false }
+    }
+  ]
+})
+```
+
+props 布尔模式 对象模式 函数模式
+
+HTML5 History模式
 
 vue-router 默认 hash 模式 —— 使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。
 
@@ -608,7 +648,11 @@ history —— 利用了 HTML5 History Interface 中新增的 pushState() 和 re
 
 mode: 'history',  路由的 history 模式  需要后台配置支持
 
-router.beforeEach、beforeResolve 、afterEach、beforeEnter 
+导航守卫
+
+router.beforeEach、beforeResolve 、afterEach、beforeEnter
+
+路由懒加载
 
 const Foo = () => import('./Foo.vue')
 
