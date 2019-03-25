@@ -967,7 +967,6 @@ this.$set(this.someObject,'b',2)
 
 ### begin
 
-```
 说下Vue的生命周期？每个生命周期的作用？
 组件间传递怎么传？说下vuex？
 说下Vue Router？动态路由参数？钩子都有哪些？
@@ -991,4 +990,93 @@ vue打包js太大，怎么办？了解动静分离吗？
 说下跨域及解决方法？
 前台这块会不会跨域？
 输入URL之后发生的......
+vue filter，写一个filter
 ```
+<!-- 在双花括号中 -->
+{{ message | capitalize }}
+<!-- 在 `v-bind` 中 -->
+<div v-bind:id="rawId | formatId"></div>
+filters: {
+  capitalize: function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+  }
+}
+Vue.filter('capitalize', function (value) {
+  if (!value) return ''
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})
+```
+递归  
+vue怎么跨域
+
+1、div居中显示（至少两种方法）
+2、写一个方法，输入m，n。输出长度为m，值为n的数组（至少2种方法）
+
+```
+function demo(m,n){
+	var arr=[];
+	for (var i = 0; i < m; i++) {
+		arr.push(n);
+	}
+	n=arr;
+	return n;
+}
+console.log(demo(3,1))
+ 
+function creatAry(m, n) {
+    var ary = [];
+    function aryPush(m, n) {
+        if (ary.length == m)return ary;//递归结束条件
+        ary.push(n);
+        return aryPush(m, n);//这里必须要写return，否则输出为undefined
+    }
+    return (aryPush(m, n))
+}
+console.log(creatAry(3, 4))
+```
+
+3、写一个上下结构的布局，上面部分高度84px，下面自适应浏览器
+
+```
+body{
+  height:100vh;
+}
+.box{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+.box1{
+  width:100%;
+  height:84px;
+  background:red;
+}
+.box2{
+  width:100%;
+  flex:1;
+  background:green;
+}
+```
+```
+body{
+  height:100vh;
+}
+.box{
+  height:100%;
+}
+.box1{
+  width:100%;
+  height:84px;
+  background:red;
+}
+.box2{
+  width:100%;
+  height: calc(100% - 80px);
+  background:green;
+}
+```
+4、写一个简单的闭包
+5、一个部门树 treeData。复制它，并把树转化成列表。
