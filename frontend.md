@@ -1002,7 +1002,7 @@ vue打包js太大，怎么办？了解动静分离吗？
 说下跨域及解决方法？
 前台这块会不会跨域？
 输入URL之后发生的......
-vue filter，写一个filter
+vue filter，写一个filter.watch怎么写？
 ```
 <!-- 在双花括号中 -->
 {{ message | capitalize }}
@@ -1021,6 +1021,20 @@ Vue.filter('capitalize', function (value) {
   return value.charAt(0).toUpperCase() + value.slice(1)
 })
 ```
+```
+data: {
+	question: '',
+	answer: 'I cannot give you an answer until you ask a question!'
+},
+watch: {
+	// 如果 `question` 发生改变，这个函数就会运行
+	question: function (newQuestion, oldQuestion) {
+	  this.answer = 'Waiting for you to stop typing...'
+	  this.debouncedGetAnswer()
+	}
+},
+```
+
 递归  
 vue怎么跨域
 
@@ -1096,3 +1110,33 @@ body{
 css实现三角形
 
 es6实现 长度m值n的求组
+
+link和import的区别   css
+
+link引用的CSS会同时被加载，而@import引用的CSS 会等到页面全部被下载完再被加载。
+
+使用dom控制样式时的差别。当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的。
+
+写个闭包   闭包的用处
+
+验证码是什么    有什么用
+
+浏览器内核有什么
+
+apply和call是什么   有什么区别
+
+ajax  怎么同步异步。  Ajax怎么调用接口。dom删除添加操作。
+
+安卓iOS页面兼容
+
+vue监听数据怎么写的。
+
+A页面跳转到B页面，怎么保存A页面的内容。
+
+Vue页面跳转保留数据 keep-alive
+
+父亲传给儿子怎么传，儿子怎么应用数据。
+
+配置cli的时候修改过什么？
+
+登录的时候怎么保存的数据及登录状态。
