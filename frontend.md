@@ -1062,6 +1062,10 @@ function creatAry(m, n) {
     return (aryPush(m, n))
 }
 console.log(creatAry(3, 4))
+
+function abc(m,n){
+	return Array(m).fill(n)
+}
 ```
 
 3、写一个上下结构的布局，上面部分高度84px，下面自适应浏览器高度。
