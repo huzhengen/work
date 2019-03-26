@@ -49,6 +49,18 @@ src autoplay poster track controls height loop width
 
 2、两种盒模型分别说一下？区别？哪个好？为什么border-box比content-box好呢？
 
+W3C的盒模型方式被称为“content-box”，IE的被称为“border-box”
+
+当使用content-box时：页面将采用标准模式来解析计算，content-box也是默认模式。content-box（标准盒模型）
+
+当使用border-box时，页面将采用怪异模式解析计算，怪异模式也称为IE模式
+
+如果将box-sizing设为border-box则用的是IE盒模型
+
+IE盒子模型的content部分包含了padding和border。
+
+IE盒模型的content/width包括border、padding
+
 border-box 的宽度包含了padding和border
 
 border-box  content-box   哪一种写起来更方便
@@ -1080,3 +1092,7 @@ body{
 ```
 4、写一个简单的闭包
 5、一个部门树 treeData。复制它，并把树转化成列表。
+
+css实现三角形
+
+es6实现 长度m值n的求组
