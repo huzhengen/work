@@ -1144,3 +1144,18 @@ Vue页面跳转保留数据 keep-alive
 配置cli的时候修改过什么？
 
 登录的时候怎么保存的数据及登录状态。
+
+1、对象的解构赋值中，`var {a,b,c}={"c":10,"b":9,"a":8}`结果中，a、b、c的值分别是：`8 9 10`
+
+1、window.isNaN("abc")和Number.isNaN("abc")的结果分别是：`true，false`
+
+ES6 为了弥补这一BUG（而不是修正，因为isNaN存在时间太长，有可能很多功能都是基于这个BUG之上的）引入了 Number.isNaN().
+
+1、
+```
+arr.forEach(function(v,i){
+  console.log(i);
+  console.log(v);
+})
+```
+改成箭头函数
