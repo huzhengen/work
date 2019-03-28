@@ -1139,7 +1139,14 @@ A页面跳转到B页面，怎么保存A页面的内容。
 
 Vue页面跳转保留数据 keep-alive
 
-父亲传给儿子怎么传，儿子怎么应用数据。
+父亲传给儿子怎么传，儿子怎么应用数据。props
+
+```
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+```
 
 配置cli的时候修改过什么？
 
