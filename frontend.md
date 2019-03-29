@@ -668,6 +668,30 @@ router.beforeEach、beforeResolve 、afterEach、beforeEnter
 
 const Foo = () => import('./Foo.vue')
 
+1、nextTick
+
+为了在数据变化之后等待 Vue 完成更新 DOM ，可以在数据变化之后立即使用 Vue.nextTick(callback) 。
+
+```
+Vue.component('example', {
+  template: '<span>{{ message }}</span>',
+  data: function () {
+    return {
+      message: '没有更新'
+    }
+  },
+  methods: {
+    updateMessage: function () {
+      this.message = '更新完成'
+      console.log(this.$el.textContent) // => '没有更新'
+      this.$nextTick(function () {
+        console.log(this.$el.textContent) // => '更新完成'
+      })
+    }
+  }
+})
+```
+
 ### Webpack
 
 1、有哪些常见的loader和plugin，你用过哪些？loader和plugin的区别是什么？
