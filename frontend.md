@@ -668,6 +668,8 @@ router.beforeEach、beforeResolve 、afterEach、beforeEnter
 
 const Foo = () => import('./Foo.vue')
 
+路由元信息 meta
+
 1、nextTick
 
 为了在数据变化之后等待 Vue 完成更新 DOM ，可以在数据变化之后立即使用 Vue.nextTick(callback) 。
