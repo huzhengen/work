@@ -585,6 +585,10 @@ store.commit('increment')
 
 受现代 JavaScript 的限制 (而且 Object.observe 也已经被废弃)，Vue 不能检测到对象属性的添加或删除。需要用`Vue.set(object, key, value)`或者`this.$set(this.someObject,'b',2)`
 
+这些 getter/setter 对用户来说是不可见的，但是在内部它们让 Vue 追踪依赖，在属性被访问和修改时通知变化。
+
+每个组件实例都有相应的 watcher 实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用时，会通知 watcher 重新计算，从而致使它关联的组件得以更新。
+
 3、Vue Router 你怎么用的？
 
 Vue Router是 Vue.js 官方的路由管理器
@@ -1203,3 +1207,10 @@ arr.forEach(function(v,i){
 })
 ```
 改成箭头函数
+
+1、浏览器工作原理？JS是线程，又异步，这冲突吗？
+
+1、手机端怎么调试？说下bfc？
+
+1、浏览器怎么解析HTML css？
+
