@@ -1214,3 +1214,5 @@ arr.forEach(function(v,i){
 
 1、浏览器怎么解析HTML css？
 
+谈谈promise/async/await的执行顺序
+https://segmentfault.com/a/1190000018622280
