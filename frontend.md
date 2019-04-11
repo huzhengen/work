@@ -1,5 +1,215 @@
 # interview
 
+### work
+
+说下Vue的生命周期？每个生命周期的作用？
+组件间传递怎么传？说下vuex？
+说下Vue Router？动态路由参数？钩子都有哪些？
+beforeEach
+afterEach
+beforeEnter
+beforeResolve
+beforeRouteEnter
+beforeRouteUpdate
+beforeRouteLeave
+说下闭包？闭包的坏处？
+说下浏览器缓存？他们的区别？各个的过期时间？
+做过单点登录吗？
+用过百度地图吗？地图上有很多数据怎么办，如何做？    
+如何清除浮动?
+说下事件委托/代理？事件代理的原理是什么？
+
+1、箭头函数的好处坏处？
+```
+更简洁的语法，只有一个参数，可以省略括号，没有局部this的绑定，箭头函数不会改变this本来的绑定
+```
+
+1、JS延迟加载
+```
+直接将script节点放置在</body>之前
+使用script标签的defer和async属性，defer属性为延迟加载
+```
+
+你最近做的项目的印象最深的是?
+讲下原型、原型链？讲下闭包？
+vue打包js太大，怎么办？了解动静分离吗？
+说下跨域及解决方法？
+前台这块会不会跨域？
+输入URL之后发生的......
+vue filter，写一个filter.watch怎么写？
+```
+<!-- 在双花括号中 -->
+{{ message | capitalize }}
+<!-- 在 `v-bind` 中 -->
+<div v-bind:id="rawId | formatId"></div>
+filters: {
+  capitalize: function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+  }
+}
+Vue.filter('capitalize', function (value) {
+  if (!value) return ''
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})
+```
+```
+data: {
+	question: '',
+	answer: 'I cannot give you an answer until you ask a question!'
+},
+watch: {
+	// 如果 `question` 发生改变，这个函数就会运行
+	question: function (newQuestion, oldQuestion) {
+	  this.answer = 'Waiting for you to stop typing...'
+	  this.debouncedGetAnswer()
+	}
+},
+```
+
+递归  
+vue怎么跨域
+
+1、div居中显示（至少两种方法）
+2、写一个方法，输入m，n。输出长度为m，值为n的数组（至少2种方法）
+
+```
+function demo(m,n){
+	var arr=[];
+	for (var i = 0; i < m; i++) {
+		arr.push(n);
+	}
+	n=arr;
+	return n;
+}
+console.log(demo(3,1))
+ 
+function creatAry(m, n) {
+    var ary = [];
+    function aryPush(m, n) {
+        if (ary.length == m)return ary;//递归结束条件
+        ary.push(n);
+        return aryPush(m, n);//这里必须要写return，否则输出为undefined
+    }
+    return (aryPush(m, n))
+}
+console.log(creatAry(3, 4))
+
+function abc(m,n){
+	return Array(m).fill(n)
+}
+```
+
+3、写一个上下结构的布局，上面部分高度84px，下面自适应浏览器高度。
+
+```
+body{
+  height:100vh;
+}
+.box{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+.box1{
+  width:100%;
+  height:84px;
+  background:red;
+}
+.box2{
+  width:100%;
+  flex:1;
+  background:green;
+}
+```
+```
+body{
+  height:100vh;
+}
+.box{
+  height:100%;
+}
+.box1{
+  width:100%;
+  height:84px;
+  background:red;
+}
+.box2{
+  width:100%;
+  height: calc(100% - 80px);
+  background:green;
+}
+```
+4、写一个简单的闭包
+5、一个部门树 treeData。复制它，并把树转化成列表。
+
+css实现三角形
+
+es6实现 长度m值n的求组
+
+link和import的区别   css
+
+link引用的CSS会同时被加载，而@import引用的CSS 会等到页面全部被下载完再被加载。
+
+使用dom控制样式时的差别。当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的。
+
+写个闭包   闭包的用处
+
+验证码是什么    有什么用
+
+浏览器内核有什么
+
+apply和call是什么   有什么区别
+
+ajax  怎么同步异步。  Ajax怎么调用接口。dom删除添加操作。
+
+安卓iOS页面兼容
+
+vue监听数据怎么写的。
+
+A页面跳转到B页面，怎么保存A页面的内容。
+
+Vue页面跳转保留数据 keep-alive
+
+父亲传给儿子怎么传，儿子怎么应用数据。props
+
+```
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+```
+
+配置cli的时候修改过什么？
+
+登录的时候怎么保存的数据及登录状态。
+
+1、对象的解构赋值中，`var {a,b,c}={"c":10,"b":9,"a":8}`结果中，a、b、c的值分别是：`8 9 10`
+
+1、window.isNaN("abc")和Number.isNaN("abc")的结果分别是：`true，false`
+
+ES6 为了弥补这一BUG（而不是修正，因为isNaN存在时间太长，有可能很多功能都是基于这个BUG之上的）引入了 Number.isNaN().
+
+1、
+```
+arr.forEach(function(v,i){
+  console.log(i);
+  console.log(v);
+})
+```
+改成箭头函数
+
+1、浏览器工作原理？JS是线程，又异步，这冲突吗？
+
+1、手机端怎么调试？说下bfc？
+
+1、浏览器怎么解析HTML css？
+
+谈谈promise/async/await的执行顺序
+https://segmentfault.com/a/1190000018622280
+
 ### HTML
 
 1、你是如何理解HTML语义化的？你用过哪些HTML5标签？
@@ -1006,213 +1216,3 @@ this.$set(this.someObject,'b',2)
 4、留言板功能是如何防止我输入脚本进行攻击的？（脚本比如<script>alert(1)</script>）。为什么单引号过滤，双引号不过滤？
 
 过滤一些特殊符号，防止XSS攻击。
-
-### begin
-
-说下Vue的生命周期？每个生命周期的作用？
-组件间传递怎么传？说下vuex？
-说下Vue Router？动态路由参数？钩子都有哪些？
-beforeEach
-afterEach
-beforeEnter
-beforeResolve
-beforeRouteEnter
-beforeRouteUpdate
-beforeRouteLeave
-说下闭包？闭包的坏处？
-说下浏览器缓存？他们的区别？各个的过期时间？
-做过单点登录吗？
-用过百度地图吗？地图上有很多数据怎么办，如何做？    
-如何清除浮动?
-说下事件委托/代理？事件代理的原理是什么？
-
-1、箭头函数的好处坏处？
-```
-更简洁的语法，只有一个参数，可以省略括号，没有局部this的绑定，箭头函数不会改变this本来的绑定
-```
-
-1、JS延迟加载
-```
-直接将script节点放置在</body>之前
-使用script标签的defer和async属性，defer属性为延迟加载
-```
-
-你最近做的项目的印象最深的是?
-讲下原型、原型链？讲下闭包？
-vue打包js太大，怎么办？了解动静分离吗？
-说下跨域及解决方法？
-前台这块会不会跨域？
-输入URL之后发生的......
-vue filter，写一个filter.watch怎么写？
-```
-<!-- 在双花括号中 -->
-{{ message | capitalize }}
-<!-- 在 `v-bind` 中 -->
-<div v-bind:id="rawId | formatId"></div>
-filters: {
-  capitalize: function (value) {
-    if (!value) return ''
-    value = value.toString()
-    return value.charAt(0).toUpperCase() + value.slice(1)
-  }
-}
-Vue.filter('capitalize', function (value) {
-  if (!value) return ''
-  value = value.toString()
-  return value.charAt(0).toUpperCase() + value.slice(1)
-})
-```
-```
-data: {
-	question: '',
-	answer: 'I cannot give you an answer until you ask a question!'
-},
-watch: {
-	// 如果 `question` 发生改变，这个函数就会运行
-	question: function (newQuestion, oldQuestion) {
-	  this.answer = 'Waiting for you to stop typing...'
-	  this.debouncedGetAnswer()
-	}
-},
-```
-
-递归  
-vue怎么跨域
-
-1、div居中显示（至少两种方法）
-2、写一个方法，输入m，n。输出长度为m，值为n的数组（至少2种方法）
-
-```
-function demo(m,n){
-	var arr=[];
-	for (var i = 0; i < m; i++) {
-		arr.push(n);
-	}
-	n=arr;
-	return n;
-}
-console.log(demo(3,1))
- 
-function creatAry(m, n) {
-    var ary = [];
-    function aryPush(m, n) {
-        if (ary.length == m)return ary;//递归结束条件
-        ary.push(n);
-        return aryPush(m, n);//这里必须要写return，否则输出为undefined
-    }
-    return (aryPush(m, n))
-}
-console.log(creatAry(3, 4))
-
-function abc(m,n){
-	return Array(m).fill(n)
-}
-```
-
-3、写一个上下结构的布局，上面部分高度84px，下面自适应浏览器高度。
-
-```
-body{
-  height:100vh;
-}
-.box{
-  height:100%;
-  display:flex;
-  flex-direction:column;
-}
-.box1{
-  width:100%;
-  height:84px;
-  background:red;
-}
-.box2{
-  width:100%;
-  flex:1;
-  background:green;
-}
-```
-```
-body{
-  height:100vh;
-}
-.box{
-  height:100%;
-}
-.box1{
-  width:100%;
-  height:84px;
-  background:red;
-}
-.box2{
-  width:100%;
-  height: calc(100% - 80px);
-  background:green;
-}
-```
-4、写一个简单的闭包
-5、一个部门树 treeData。复制它，并把树转化成列表。
-
-css实现三角形
-
-es6实现 长度m值n的求组
-
-link和import的区别   css
-
-link引用的CSS会同时被加载，而@import引用的CSS 会等到页面全部被下载完再被加载。
-
-使用dom控制样式时的差别。当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的。
-
-写个闭包   闭包的用处
-
-验证码是什么    有什么用
-
-浏览器内核有什么
-
-apply和call是什么   有什么区别
-
-ajax  怎么同步异步。  Ajax怎么调用接口。dom删除添加操作。
-
-安卓iOS页面兼容
-
-vue监听数据怎么写的。
-
-A页面跳转到B页面，怎么保存A页面的内容。
-
-Vue页面跳转保留数据 keep-alive
-
-父亲传给儿子怎么传，儿子怎么应用数据。props
-
-```
-Vue.component('blog-post', {
-  props: ['title'],
-  template: '<h3>{{ title }}</h3>'
-})
-```
-
-配置cli的时候修改过什么？
-
-登录的时候怎么保存的数据及登录状态。
-
-1、对象的解构赋值中，`var {a,b,c}={"c":10,"b":9,"a":8}`结果中，a、b、c的值分别是：`8 9 10`
-
-1、window.isNaN("abc")和Number.isNaN("abc")的结果分别是：`true，false`
-
-ES6 为了弥补这一BUG（而不是修正，因为isNaN存在时间太长，有可能很多功能都是基于这个BUG之上的）引入了 Number.isNaN().
-
-1、
-```
-arr.forEach(function(v,i){
-  console.log(i);
-  console.log(v);
-})
-```
-改成箭头函数
-
-1、浏览器工作原理？JS是线程，又异步，这冲突吗？
-
-1、手机端怎么调试？说下bfc？
-
-1、浏览器怎么解析HTML css？
-
-谈谈promise/async/await的执行顺序
-https://segmentfault.com/a/1190000018622280
