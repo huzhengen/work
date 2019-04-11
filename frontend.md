@@ -18,6 +18,14 @@ beforeRouteLeave
 用过百度地图吗？地图上有很多数据怎么办，如何做？    
 如何清除浮动?
 说下事件委托/代理？事件代理的原理是什么？
+字符串数组的最长公共前缀？
+https://blog.csdn.net/qq_30216191/article/details/81056765
+es6 generator next。
+promise面试题
+https://www.cnblogs.com/sunshq/p/7890504.html
+Promise 构造函数是同步执行的，promise.then 中的函数是异步执行的。
+https://juejin.im/post/5af800fe518825429c594f92
+https://juejin.im/post/59e85eebf265da430d571f89
 
 1、箭头函数的好处坏处？
 ```
