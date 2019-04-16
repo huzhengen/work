@@ -2,8 +2,9 @@
 
 ### work
 
-说下Vue的生命周期？每个生命周期的作用？
-组件间传递怎么传？说下vuex？
+Promise对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。Promise对象的状态改变，只有两种可能：从pending变为fulfilled和从pending变为rejected。
+https://segmentfault.com/a/1190000010345031
+
 说下Vue Router？动态路由参数？钩子都有哪些？
 beforeEach
 afterEach
