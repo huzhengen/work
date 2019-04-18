@@ -2,6 +2,47 @@
 
 ### work
 
+Vue自定义指令
+
+```
+// 注册一个全局自定义指令 `v-focus`
+Vue.directive('focus', {
+  // 当被绑定的元素插入到 DOM 中时……
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})
+// 注册局部指令
+directives: {
+  focus: {
+    // 指令的定义
+    inserted: function (el) {
+      el.focus()
+    }
+  }
+}
+```
+
+Vue slot
+
+```
+<navigation-link url="/profile">
+  Your Profile
+</navigation-link>
+// <navigation-link> 的模板中可能会写为：
+<a v-bind:href="url" class="nav-link">
+  <slot></slot>
+</a>
+// 当组件渲染的时候，<slot></slot> 将会被替换为“Your Profile”。
+// 插槽内可以包含任何模板代码，包括 HTML：
+<navigation-link url="/profile">
+  <!-- 添加一个 Font Awesome 图标 -->
+  <span class="fa fa-user"></span>
+  Your Profile
+</navigation-link>
+```
+
 Promise对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。Promise对象的状态改变，只有两种可能：从pending变为fulfilled和从pending变为rejected。
 https://segmentfault.com/a/1190000010345031
 
@@ -58,6 +99,7 @@ filters: {
     return value.charAt(0).toUpperCase() + value.slice(1)
   }
 }
+// 可以在main.js注册一个全局的filter（全局定义过滤器）
 Vue.filter('capitalize', function (value) {
   if (!value) return ''
   value = value.toString()
