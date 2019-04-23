@@ -2,7 +2,21 @@
 
 ### work
 
+js设计模式
+
+函数式编程
+
+async await
+
+动画哪些属性不能操作
+
+js性能问题  
+
+js装饰器
+
 Vue自定义指令
+
+vuex多数据怎么弄？
 
 ```
 // 注册一个全局自定义指令 `v-focus`
@@ -47,6 +61,7 @@ Promise对象代表一个异步操作，有三种状态：pending（进行中）
 https://segmentfault.com/a/1190000010345031
 
 说下Vue Router？动态路由参数？钩子都有哪些？
+```
 beforeEach
 afterEach
 beforeEnter
@@ -54,17 +69,27 @@ beforeResolve
 beforeRouteEnter
 beforeRouteUpdate
 beforeRouteLeave
+```
 说下闭包？闭包的坏处？
+
 说下浏览器缓存？他们的区别？各个的过期时间？
+
 做过单点登录吗？
-用过百度地图吗？地图上有很多数据怎么办，如何做？    
+
+用过百度地图吗？地图上有很多数据怎么办，如何做？
+
 如何清除浮动?
+
 说下事件委托/代理？事件代理的原理是什么？
+
 字符串数组的最长公共前缀？
 https://blog.csdn.net/qq_30216191/article/details/81056765
+
 es6 generator next。
+
 promise面试题
 https://www.cnblogs.com/sunshq/p/7890504.html
+
 Promise 构造函数是同步执行的，promise.then 中的函数是异步执行的。
 https://juejin.im/post/5af800fe518825429c594f92
 https://juejin.im/post/59e85eebf265da430d571f89
@@ -81,11 +106,17 @@ https://juejin.im/post/59e85eebf265da430d571f89
 ```
 
 你最近做的项目的印象最深的是?
+
 讲下原型、原型链？讲下闭包？
+
 vue打包js太大，怎么办？了解动静分离吗？
+
 说下跨域及解决方法？
+
 前台这块会不会跨域？
+
 输入URL之后发生的......
+
 vue filter，写一个filter.watch怎么写？
 ```
 <!-- 在双花括号中 -->
@@ -120,10 +151,12 @@ watch: {
 },
 ```
 
-递归  
+递归
+
 vue怎么跨域
 
 1、div居中显示（至少两种方法）
+
 2、写一个方法，输入m，n。输出长度为m，值为n的数组（至少2种方法）
 
 ```
@@ -193,7 +226,42 @@ body{
   background:green;
 }
 ```
+
+3、3个div，上下固定高度，中间自适应
+```
+body{
+  height:100vh;
+  margin:0;
+  padding:0;
+}
+.box1{
+	height:100px;
+	background:#690;
+	width:100%;
+	position:absolute;
+	z-index:5;
+	top:0;
+}
+.box2{
+  background:#FC0;
+  width:100%;
+  overflow:auto;
+  position:absolute;
+  z-index:10;
+  top:100px;
+  bottom:100px;
+}
+.box3{
+  height:100px;
+  background:#690;
+  width:100%;
+  position:absolute;
+  z-index:200;
+  bottom:0;
+}
+```
 4、写一个简单的闭包
+
 5、一个部门树 treeData。复制它，并把树转化成列表。
 
 css实现三角形
@@ -264,12 +332,13 @@ https://segmentfault.com/a/1190000018622280
 ### HTML
 
 1、你是如何理解HTML语义化的？你用过哪些HTML5标签？
-
+```
 header main footer article nav section
 
 canvas video audio
 
 比如，段落要写成p标签，标题要写成h1-h6，文章用article，时间用time，画板用canvas标签，
+```
 
 1、meta viewport是做什么用的？怎么写？
 
