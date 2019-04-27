@@ -2,6 +2,8 @@
 
 ### work
 
+面向对象
+
 js设计模式
 
 函数式编程
@@ -10,13 +12,15 @@ async await
 
 动画哪些属性不能操作
 
-js性能问题  
+js性能问题
 
 js装饰器
 
-Vue自定义指令
-
 vuex多数据怎么弄？
+
+Vue $parent $children
+
+Vue自定义指令
 
 ```
 // 注册一个全局自定义指令 `v-focus`
