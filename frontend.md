@@ -1,6 +1,6 @@
 # interview
 
-### work
+https://juejin.im/post/5cbff661e51d456e693f48ec
 
 面向对象
 
