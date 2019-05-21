@@ -878,7 +878,27 @@ destroyed
 
 父亲通过props传递给孩子
 
-儿子传递给父亲 通过$emit('xxx', data)   $on('xxx', function(){})
+```
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+```
+
+儿子传递给父亲 通过$emit('xxx', data)
+
+```
+// 父组件
+<blog-post
+  ...
+  v-on:enlarge-text="postFontSize += 0.1"
+></blog-post>
+
+// 子组件
+<button v-on:click="$emit('enlarge-text')">
+  Enlarge text
+</button>
+```
 
 爷孙组件或者兄弟组件：eventBus
 
