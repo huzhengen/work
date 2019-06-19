@@ -1,27 +1,47 @@
 # interview
 
+```js
+function createTree(menus, pid) {
+    function tree(pid) {
+        let tempArr = []
+        menus.filter(el => {
+            return el.pid === pid;
+        }).forEach(el => {
+            tempArr.push({
+                id: el.id,
+                name: el.name,
+                pid: el.pid,
+                children: tree(el.id)
+            })
+        })
+        return tempArr
+    }
+    return tree(pid)
+}
+let treeData = createTree(menus, null)
+console.log(treeData)
+let tempHtml = ''
+function createTreeHtml(treeData) {
+    treeData.forEach((el) => {
+        tempHtml += `<ul><li class="down">${el.name}</li>`
+        if (el.children) {
+            createTreeHtml(el.children)
+        }
+    })
+    tempHtml += `</ul>`
+}
+createTreeHtml(treeData)
+document.getElementById('tree').innerHTML = tempHtml
+$('li').click(function() {
+    $(this).nextAll().toggle()
+    let isHidden = $(this).nextAll().is(':hidden')
+    if (isHidden) {
+        $(this).removeClass().addClass('up')
+    } else {
+        $(this).removeClass().addClass('down')
+    }
+})
 ```
-https://juejin.im/post/5cbff661e51d456e693f48ec
-https://juejin.im/post/5cc8f394f265da038733ae77
-```
-
-面向对象
-
-js设计模式
-
-函数式编程
-
-async await
-
-动画哪些属性不能操作
-
-js性能问题
-
-js装饰器
-
-vuex多数据怎么弄？
-
-Vue $parent $children
 
 Vue自定义指令
 
@@ -77,29 +97,6 @@ beforeRouteEnter
 beforeRouteUpdate
 beforeRouteLeave
 ```
-说下闭包？闭包的坏处？
-
-说下浏览器缓存？他们的区别？各个的过期时间？
-
-做过单点登录吗？
-
-用过百度地图吗？地图上有很多数据怎么办，如何做？
-
-如何清除浮动?
-
-说下事件委托/代理？事件代理的原理是什么？
-
-字符串数组的最长公共前缀？
-https://blog.csdn.net/qq_30216191/article/details/81056765
-
-es6 generator next。
-
-promise面试题
-https://www.cnblogs.com/sunshq/p/7890504.html
-
-Promise 构造函数是同步执行的，promise.then 中的函数是异步执行的。
-https://juejin.im/post/5af800fe518825429c594f92
-https://juejin.im/post/59e85eebf265da430d571f89
 
 1、箭头函数的好处坏处？
 ```
@@ -111,18 +108,6 @@ https://juejin.im/post/59e85eebf265da430d571f89
 直接将script节点放置在</body>之前
 使用script标签的defer和async属性，defer属性为延迟加载
 ```
-
-你最近做的项目的印象最深的是?
-
-讲下原型、原型链？讲下闭包？
-
-vue打包js太大，怎么办？了解动静分离吗？
-
-说下跨域及解决方法？
-
-前台这块会不会跨域？
-
-输入URL之后发生的......
 
 vue filter，写一个filter.watch怎么写？
 ```
@@ -157,12 +142,6 @@ watch: {
 	}
 },
 ```
-
-递归
-
-vue怎么跨域
-
-1、div居中显示（至少两种方法）
 
 2、写一个方法，输入m，n。输出长度为m，值为n的数组（至少2种方法）
 
@@ -267,37 +246,12 @@ body{
   bottom:0;
 }
 ```
-4、写一个简单的闭包
 
-5、一个部门树 treeData。复制它，并把树转化成列表。
-
-css实现三角形
-
-es6实现 长度m值n的求组
-
-link和import的区别   css
+1、link和import的区别   css
 
 link引用的CSS会同时被加载，而@import引用的CSS 会等到页面全部被下载完再被加载。
 
 使用dom控制样式时的差别。当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的。
-
-写个闭包   闭包的用处
-
-验证码是什么    有什么用
-
-浏览器内核有什么
-
-apply和call是什么   有什么区别
-
-ajax  怎么同步异步。  Ajax怎么调用接口。dom删除添加操作。
-
-安卓iOS页面兼容
-
-vue监听数据怎么写的。
-
-A页面跳转到B页面，怎么保存A页面的内容。
-
-Vue页面跳转保留数据 keep-alive
 
 父亲传给儿子怎么传，儿子怎么应用数据。props
 
@@ -308,33 +262,11 @@ Vue.component('blog-post', {
 })
 ```
 
-配置cli的时候修改过什么？
-
-登录的时候怎么保存的数据及登录状态。
-
 1、对象的解构赋值中，`var {a,b,c}={"c":10,"b":9,"a":8}`结果中，a、b、c的值分别是：`8 9 10`
 
 1、window.isNaN("abc")和Number.isNaN("abc")的结果分别是：`true，false`
 
 ES6 为了弥补这一BUG（而不是修正，因为isNaN存在时间太长，有可能很多功能都是基于这个BUG之上的）引入了 Number.isNaN().
-
-1、
-```
-arr.forEach(function(v,i){
-  console.log(i);
-  console.log(v);
-})
-```
-改成箭头函数
-
-1、浏览器工作原理？JS是线程，又异步，这冲突吗？
-
-1、手机端怎么调试？说下bfc？
-
-1、浏览器怎么解析HTML css？
-
-谈谈promise/async/await的执行顺序
-https://segmentfault.com/a/1190000018622280
 
 ### HTML
 
@@ -364,19 +296,13 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 ctx.fillStyle = 'green';
 ctx.fillRect(10, 10, 100, 100);
-```
-
 fillStyle
-
 fillRect 填充矩形
-
 strokeRect 矩形边框
-
 clearRect 清除矩形
-
 beginPath、closePath、stroke、fill、moveTo、lineTo
-
 getContext() 方法来访问绘画上下文
+```
 
 2、用video的时候会加什么属性？
 
@@ -1392,3 +1318,116 @@ this.$set(this.someObject,'b',2)
 4、留言板功能是如何防止我输入脚本进行攻击的？（脚本比如<script>alert(1)</script>）。为什么单引号过滤，双引号不过滤？
 
 过滤一些特殊符号，防止XSS攻击。
+
+```
+https://juejin.im/post/5cbff661e51d456e693f48ec
+https://juejin.im/post/5cc8f394f265da038733ae77
+```
+
+面向对象
+
+js设计模式
+
+函数式编程
+
+async await
+
+动画哪些属性不能操作
+
+js性能问题
+
+js装饰器
+
+vuex多数据怎么弄？
+
+Vue $parent $children
+
+说下闭包？闭包的坏处？
+
+说下浏览器缓存？他们的区别？各个的过期时间？
+
+做过单点登录吗？
+
+用过百度地图吗？地图上有很多数据怎么办，如何做？
+
+如何清除浮动?
+
+说下事件委托/代理？事件代理的原理是什么？
+
+字符串数组的最长公共前缀？
+https://blog.csdn.net/qq_30216191/article/details/81056765
+
+es6 generator next。
+
+promise面试题
+https://www.cnblogs.com/sunshq/p/7890504.html
+
+Promise 构造函数是同步执行的，promise.then 中的函数是异步执行的。
+https://juejin.im/post/5af800fe518825429c594f92
+https://juejin.im/post/59e85eebf265da430d571f89
+
+你最近做的项目的印象最深的是?
+
+讲下原型、原型链？讲下闭包？
+
+vue打包js太大，怎么办？了解动静分离吗？
+
+说下跨域及解决方法？
+
+前台这块会不会跨域？
+
+输入URL之后发生的......
+
+递归
+
+vue怎么跨域
+
+1、div居中显示（至少两种方法）
+
+4、写一个简单的闭包
+
+5、一个部门树 treeData。复制它，并把树转化成列表。
+
+css实现三角形
+
+es6实现 长度m值n的求组
+
+写个闭包   闭包的用处
+
+验证码是什么    有什么用
+
+浏览器内核有什么
+
+apply和call是什么   有什么区别
+
+ajax  怎么同步异步。  Ajax怎么调用接口。dom删除添加操作。
+
+安卓iOS页面兼容
+
+vue监听数据怎么写的。
+
+A页面跳转到B页面，怎么保存A页面的内容。
+
+Vue页面跳转保留数据 keep-alive
+
+配置cli的时候修改过什么？
+
+登录的时候怎么保存的数据及登录状态。
+
+1、
+```
+arr.forEach(function(v,i){
+  console.log(i);
+  console.log(v);
+})
+```
+改成箭头函数
+
+1、浏览器工作原理？JS是线程，又异步，这冲突吗？
+
+1、手机端怎么调试？说下bfc？
+
+1、浏览器怎么解析HTML css？
+
+谈谈promise/async/await的执行顺序
+https://segmentfault.com/a/1190000018622280
